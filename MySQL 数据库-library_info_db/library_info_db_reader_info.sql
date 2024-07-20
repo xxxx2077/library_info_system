@@ -1,0 +1,66 @@
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+--
+-- Host: localhost    Database: library_info_db
+-- ------------------------------------------------------
+-- Server version	8.0.34
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `reader_info`
+--
+
+DROP TABLE IF EXISTS `reader_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reader_info` (
+  `RID` int NOT NULL AUTO_INCREMENT,
+  `RTNo` int DEFAULT NULL,
+  `SNo` char(8) NOT NULL,
+  `RName` varchar(40) NOT NULL,
+  `Sex` tinyint(1) DEFAULT NULL,
+  `Rtelephone` char(11) DEFAULT NULL,
+  `RDTime` datetime NOT NULL,
+  `RVDTime` datetime NOT NULL,
+  `Rreads` int NOT NULL DEFAULT '0',
+  `RTreads` int NOT NULL DEFAULT '0',
+  `RLstatus` tinyint(1) NOT NULL DEFAULT '0',
+  `RFTimes` int NOT NULL DEFAULT '0',
+  `RNotion` text,
+  `RPwd` varchar(16) NOT NULL DEFAULT '123',
+  PRIMARY KEY (`RID`),
+  UNIQUE KEY `SNo` (`SNo`),
+  KEY `FK_Reference_1` (`RTNo`),
+  CONSTRAINT `FK_Reference_1` FOREIGN KEY (`RTNo`) REFERENCES `reader_type` (`RTNo`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reader_info`
+--
+
+LOCK TABLES `reader_info` WRITE;
+/*!40000 ALTER TABLE `reader_info` DISABLE KEYS */;
+INSERT INTO `reader_info` VALUES (1,3,'21311138','叶文熙',0,'13712052798','2024-01-12 13:41:07','2028-01-12 13:41:07',0,4,0,3,NULL,'123'),(2,1,'21311135','李佶',1,'18676213251','2024-01-12 13:57:38','2028-01-12 13:57:38',0,0,0,0,NULL,'Stu135'),(3,1,'21311139','吴彤雨',0,'17881829463','2024-01-12 13:58:08','2028-01-12 13:58:08',0,0,0,0,NULL,'Stu139'),(4,2,'21311261','陈卓敏',0,'14605589463','2024-01-12 13:58:37','2028-01-12 13:58:37',0,0,0,0,NULL,'Stu261'),(18,2,'21311000','测试',1,'12312345678','2024-01-23 15:30:14','2074-01-23 15:30:14',0,0,0,0,NULL,'123');
+/*!40000 ALTER TABLE `reader_info` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-01-25 15:03:35
